@@ -1,0 +1,49 @@
+/* .MoveBuilder {
+  color: grey;
+  padding: 10px;
+  margin: auto;
+  font-size: 15px;
+  width: 100%;
+  border: 5px solid black;
+  text-align: center;
+}
+
+/* .MoveBuilder {
+  margin: 20px auto;
+  width: 80%;
+  text-align: center;
+  box-shadow: 0 2px 3px #ccc;
+  padding: 10px;
+  border: 1px solid #eee;
+  box-sizing: border-box;
+}
+*/
+
+/* @media (min-width: 600px) {
+  .MoveBuilder {
+    width: 500px;
+  }
+} */
+
+.MoveBuilderHeader {
+  padding: 30px;
+  margin: auto;
+  font-display: bold;
+  color: white;
+  text-align: left;
+}
+.MoveBuilder {
+  margin: 10px auto;
+  width: 80%;
+  text-align: center;
+  box-shadow: 0 2px 3px #ccc;
+  padding: 10px;
+  border: 1px solid #eee;
+  box-sizing: border-box;
+}
+
+@media (min-width: 600px) {
+  .MoveBuilder {
+    width: 500px;
+  }
+}

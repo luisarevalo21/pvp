@@ -1,0 +1,13 @@
+.MoveData {
+  width: 30%;
+  border: 1px solid #ccc;
+  color: #48e08d;
+  padding: 10px;
+  margin: auto;
+  text-align: center;
+}
+
+.MoveName {
+  color: white;
+  font-weight: bold;
+}
