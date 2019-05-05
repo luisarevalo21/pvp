@@ -1,16 +1,27 @@
 .Table {
   color: white;
-  width: 500px;
+  width: 65%;
+  /* padding: 20px; */
+  /* text-align: center; */
+  border: none;
   padding: 20px;
-  text-align: center;
-  border: 1px solid white;
-  font-size: 20px;
+  /* border-radius: 5px; */
   margin: 20px auto;
+  font-size: inherit;
   background-color: black;
+  color: #ced4da;
 }
 
-.Largest {
+.Winner {
   background: green;
+}
+.Tie {
+}
+.Loss {
+}
+
+h3 {
+  color: #48e08d;
 }
 
 /* @media (min-width: 500px) and (min-height: 400px) {

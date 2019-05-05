@@ -5,12 +5,14 @@ import Select from "react-select";
 const input = props => {
   let input = null;
 
-  console.log("props.moves", props.moves);
+  // console.log("props.moves", props.moves);
+  // const options = [...props.moves];
+
   const options = props.moves.map(move => {
-    return { value: move.id, label: move.id };
+    return { value: move.Pokemon, label: move.Pokemon };
   });
 
-  console.log("options", options);
+  // console.log("options", options);
 
   switch (props.inputType) {
     case "select":
@@ -18,7 +20,7 @@ const input = props => {
         <Select
           value={props.selectedOption}
           onChange={props.changed}
-          options={props.moves}
+          options={options}
           className={classes.InputElement}
 
           // className={classes.InputElement}

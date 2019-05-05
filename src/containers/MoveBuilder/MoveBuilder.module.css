@@ -26,24 +26,21 @@
 } */
 
 .MoveBuilderHeader {
-  padding: 30px;
+  /* padding: 30px; */
   margin: auto;
   font-display: bold;
   color: white;
   text-align: left;
 }
 .MoveBuilder {
-  margin: 10px auto;
-  width: 80%;
-  text-align: center;
-  box-shadow: 0 2px 3px #ccc;
+  /* margin: 10px auto; */
+  /* width: 80%; */
+  /* text-align: center; */
   padding: 10px;
   border: 1px solid #eee;
-  box-sizing: border-box;
 }
 
-@media (min-width: 600px) {
+/* @media (min-width: 600px) {
   .MoveBuilder {
     width: 500px;
-  }
-}
+  } */

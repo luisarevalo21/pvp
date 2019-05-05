@@ -1,6 +1,10 @@
-.Header {
+/* .Header {
   text-align: left;
   color: #48e08d;
   padding: 20px;
   width: 100%;
+} */
+
+h1 {
+  color: #48e08d;
 }
