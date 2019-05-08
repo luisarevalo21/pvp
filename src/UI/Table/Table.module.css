@@ -1,12 +1,12 @@
 .Table {
   color: white;
-  width: 65%;
+  width: 100%;
   /* padding: 20px; */
   /* text-align: center; */
   border: none;
   padding: 20px;
   /* border-radius: 5px; */
-  margin: 20px auto;
+  /* margin: 20px, auto; */
   font-size: inherit;
   background-color: black;
   color: #ced4da;

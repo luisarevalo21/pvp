@@ -14,7 +14,8 @@ class MoveBuilder extends Component {
     pokemon: [],
     selectedOption: null,
     quick_moves: [],
-    charge_moves: []
+    charge_moves: [],
+    legacy_moves: []
   };
 
   componentDidMount() {
@@ -64,6 +65,12 @@ class MoveBuilder extends Component {
     fetch("http://localhost:3036/chargemoves")
       .then(response => response.json())
       .then(response => this.setState({ charge_moves: response.data }))
+      .catch(err => {
+        console.log(err);
+      });
+    fetch("http://localhost:3036/legacymoves")
+      .then(response => response.json())
+      .then(response => this.setState({ legacy_moves: response.data }))
       .catch(err => {
         console.log(err);
       });
@@ -131,6 +138,7 @@ class MoveBuilder extends Component {
           selectedPokemon={data}
           quickMoves={this.state.quick_moves}
           chargeMoves={this.state.charge_moves}
+          legacyMoves={this.state.legacy_moves}
         />
       );
     }
