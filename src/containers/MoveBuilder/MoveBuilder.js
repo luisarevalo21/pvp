@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import MoveData from "../../UI/MoveData/MoveData";
+// import MoveData from "../../UI/MoveData/MoveData";
 import Input from "../../UI/Input/Input";
 import classes from "./MoveBuilder.module.css";
-import Header from "../../UI/Header/Header";
+// import Header from "../../UI/Header/Header";
 import Table from "../../UI/Table/Table";
-import axios from "../../axios";
-import Spinner from "../../UI/Spinner/Spinner";
-import QuickMoves from "../../QuickMoves";
-import Pokemon from "../../Pokemon";
+// import axios from "../../axios";
+// import Spinner from "../../UI/Spinner/Spinner";
+// import QuickMoves from "../../QuickMoves";
+// import Pokemon from "../../Pokemon";
 
 class MoveBuilder extends Component {
   state = {

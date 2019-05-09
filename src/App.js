@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 import MoveBuilder from "./containers/MoveBuilder/MoveBuilder";
 import Header from "./UI/Header/Header";
 class App extends Component {
