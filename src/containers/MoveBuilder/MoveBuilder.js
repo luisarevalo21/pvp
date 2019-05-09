@@ -27,9 +27,13 @@ class MoveBuilder extends Component {
         console.log("the data is", response.data);
         pokemon = response.data.map(element => {
           let pokemonData = {};
-
+          // console.log("element is", element);
           for (let key in element) {
-            if (element[key] !== null) {
+            // console.log("the eky is", key)
+            // console.log("element[key", element[key])
+            console.log(typeof(element[key]));
+            if (element[key] !== null || element[key] !== "" || element[key] !== " ") {
+               
               pokemonData[key] = element[key];
               // console.log("element key", element[key]);
               // const element = element[key];
@@ -116,6 +120,7 @@ class MoveBuilder extends Component {
   };
 
   render() {
+    console.log("this state pokemon", this.state.pokemon)
     let table = null;
     let element = [];
     if (this.state.pokemon) {

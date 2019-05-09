@@ -11,6 +11,7 @@ const table = props => {
   let quickMoveData = [];
   let chargeMoveData = [];
   let legacyMoves = [];
+  
   props.legacyMoves.map(element => {
     legacyMoves.push(element.legacyName);
   });
@@ -20,7 +21,7 @@ const table = props => {
   // console.log("copy", copy);
   // let filertedData = {};
   for (let key in copy) {
-    // console.log("the key is", key);
+    console.log("the key is", key);
     if (
       key === "quick move 1" ||
       key === "quick move 2" ||
@@ -28,6 +29,8 @@ const table = props => {
       key === "quick move 4" ||
       key === "quick move 5"
     ) {
+
+      console.log("THE COPY KEY IS",copy[key]);
       quickMoves.push({ key: copy[key] });
     }
     if (
@@ -56,7 +59,7 @@ const table = props => {
   }
   // console.log("legacy moves", legacyMoves);
 
-  // console.log("QUICK MOES AARE", quickMoves);
+  console.log("QUICK MOES AARE", quickMoves);
   // console.log("quick moves are", quickMoves);
   quickMoveData = props.quickMoves
     .map(element => {

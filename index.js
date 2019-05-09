@@ -6,16 +6,16 @@ const app = express();
 app.use(cors());
 app.options("*", cors());
 
-const selectPokemon = "SELECT * FROM pokemon";
-const selectFastMoves = "SELECT * FROM pokemon.`pvp_fast_moves`";
-const selectChargeMoves = "SELECT * FROM pokemon.pvp_charge_moves";
-const legacyMoves = "SELECT * FROM pokemon.legacy_moves";
+const selectPokemon = "SELECT * FROM pokemon_db.`pokemon22 - sheet1`";
+const selectFastMoves = "SELECT * FROM pokemon_db.pvpfastmoves";
+const selectChargeMoves = "SELECT * FROM pokemon_db.pvpchargemoves";
+const legacyMoves = "SELECT * FROM pokemon_db.legacy_moves";
 
 const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "password",
-  database: "pokemon"
+  database: "pokemon_db"
 });
 
 connection.connect(err => {
