@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./Table.module.css";
 
 const table = props => {
-  console.log("the moves are", props.quickMoves);
+  // console.log("the moves are", props.quickMoves);
   // console.log("selected pokemon ", props.selectedPokemon);
   // console.log("legacy moves are", props.legacyMoves);
 
@@ -15,7 +15,7 @@ const table = props => {
     legacyMoves.push(element.legacyName);
   });
 
-  console.log("legayc moves arrat is ", legacyMoves);
+  // console.log("legayc moves arrat is ", legacyMoves);
   const copy = { ...props.selectedPokemon[0] };
   // console.log("copy", copy);
   // let filertedData = {};
@@ -28,6 +28,7 @@ const table = props => {
       key === "quick move 4" ||
       key === "quick move 5"
     ) {
+      // console.log("THE COPY KEY IS", copy[key]);
       quickMoves.push({ key: copy[key] });
     }
     if (
@@ -86,13 +87,13 @@ const table = props => {
       // return accumulator[currentValue];
     });
 
-  console.log("quick move data is data", quickMoveData);
-  console.log(
-    "quick move data",
-    Math.max.apply(null, quickMoveData.map(element => element.basePower))
-  );
+  // console.log("quick move data is data", quickMoveData);
+  // console.log(
+  //   "quick move data",
+  //   Math.max.apply(null, quickMoveData.map(element => element.basePower))
+  // );
 
-  console.log("quick move data", quickMoveData.sort());
+  // console.log("quick move data", quickMoveData.sort());
   chargeMoveData = props.chargeMoves
     .map(element => {
       let data = [];
@@ -120,7 +121,7 @@ const table = props => {
 
   let basePower = [];
 
-  console.log(props.quickMoves);
+  // console.log(props.quickMoves);
   let array = [];
   let duration = [];
   let energyDelta = [];
@@ -130,26 +131,26 @@ const table = props => {
   basePower = quickMoveData.map(el => {
     array.push(el.basePower);
 
-    console.log("printing el now", el.basePower);
-    return <td key={Math.random()}>{el.basePower}</td>;
+    // console.log("printing el now", el.basePower);
+    return <td key={el.basePower + Math.random()}>{el.basePower}</td>;
   });
 
   duration = quickMoveData.map(el => {
     // console.log("printing el now", el.quickMoveStats);
-    return <td key={Math.random()}>{el.duration}</td>;
+    return <td key={el.duration + Math.random()}>{el.duration}</td>;
   });
 
   energyDelta = quickMoveData.map(el => (
-    <td key={Math.random()}> {el.energyGained}</td>
+    <td key={el.energyGained + Math.random()}> {el.energyGained}</td>
   ));
   moveCooldown = quickMoveData.map(el => (
-    <td key={Math.random()}>{el.cooldown} </td>
+    <td key={el.cooldown + Math.random()}>{el.cooldown} </td>
   ));
   energyPerDuration = quickMoveData.map(el => (
-    <td key={Math.random()}> {el.energyPerDuration}</td>
+    <td key={el.energyPerDuration + Math.random()}> {el.energyPerDuration}</td>
   ));
   damagePerDuration = quickMoveData.map(el => (
-    <td key={Math.random()}> {el.damagePerDuration}</td>
+    <td key={el.damagePerDuration + Math.random()}> {el.damagePerDuration}</td>
   ));
 
   return (
@@ -165,13 +166,15 @@ const table = props => {
       <table>
         <thead>
           <tr>
-            <th key={Math.random()}>Stats</th>
+            <th key={1}>Stats</th>
 
             {quickMoves.map(element => {
               // console.log("element inside quicmoves", legacyMoves);
-              console.log(legacyMoves.includes(element.key));
+              // console.log("key is", element.key);
               if (legacyMoves.includes(element.key)) {
-                return <th key={element.key}>{element.key}*</th>;
+                return (
+                  <th key={element.key + Math.random()}>{element.key}*</th>
+                );
               } else {
                 // console.log(
                 //   "HERE IS THE VLUE NOW",
@@ -182,7 +185,7 @@ const table = props => {
                 //   if (element.key === legacy) {
                 //     return <th key={element.key}>{element.key}*</th>;
                 //   } else {
-                return <th key={element.key}>{element.key}</th>;
+                return <th key={element.key + Math.random()}>{element.key}</th>;
               }
             })}
             {/* 
@@ -193,27 +196,27 @@ const table = props => {
         </thead>
         <tbody>
           <tr>
-            <td key={Math.random()}>Base Power</td>
+            <td key={2}>Base Power</td>
             {basePower}
           </tr>
           <tr>
-            <td key={Math.random()}>Duration</td>
+            <td key={3}>Duration</td>
             {duration}
           </tr>
           <tr>
-            <td key={Math.random()}>Energy Delta</td>
+            <td key={4}>Energy Delta</td>
             {energyDelta}
           </tr>
           <tr>
-            <td key={Math.random()}>Move Cooldown</td>
+            <td key={5}>Move Cooldown</td>
             {moveCooldown}
           </tr>
           <tr>
-            <td key={Math.random()}>Energy Per Duration</td>
+            <td key={6}>Energy Per Duration</td>
             {energyPerDuration}
           </tr>
           <tr>
-            <td key={Math.random()}>Damage Per Duration</td>
+            <td key={7}>Damage Per Duration</td>
             {damagePerDuration}
           </tr>
         </tbody>
@@ -224,7 +227,7 @@ const table = props => {
       <table>
         <thead>
           <tr>
-            <th key={Math.random()}>Stats</th>
+            <th key={8}>Stats</th>
             {chargeMoveData.map(element => {
               if (legacyMoves.includes(element.chargeMoveName)) {
                 return (
@@ -243,23 +246,23 @@ const table = props => {
 
         <tbody>
           <tr>
-            <td key={Math.random()}>Base Power</td>
+            <td key={9}>Base Power</td>
             {chargeMoveData.map(element => {
               // console.log("the eelement is", element);
               return <th key={element.chargeMoveName}>{element.basePower}</th>;
             })}
           </tr>
           <tr>
-            <td key={Math.random()}>Charge Energy</td>
+            <td key={10}>Charge Energy</td>
             {chargeMoveData.map(element => {
               // console.log(element);
               return <th key={element.chargeMoveName}>{element.energy}</th>;
             })}
           </tr>
           <tr>
-            <td key={Math.random()}>Damage Per Energy</td>
+            <td key={11}>Damage Per Energy</td>
             {chargeMoveData.map(element => {
-              console.log(element);
+              // console.log(element);
               return (
                 <th key={element.chargeMoveName}>{element.damagePerEnergy}</th>
               );

@@ -24,7 +24,7 @@ class MoveBuilder extends Component {
       .then(response => {
         let pokemon = {};
 
-        console.log("the data is", response.data);
+        // console.log("the data is", response.data);
         pokemon = response.data.map(element => {
           let pokemonData = {};
 
@@ -118,6 +118,7 @@ class MoveBuilder extends Component {
   render() {
     let table = null;
     let element = [];
+    // console.log("the state of pokemon is", this.state.pokemon);
     if (this.state.pokemon) {
       element = [...this.state.pokemon];
       element.push(
