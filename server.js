@@ -9,12 +9,14 @@ app.options("*", cors());
 const selectPokemon = "SELECT * FROM pokemon";
 const selectFastMoves = "SELECT * FROM pokemon.`pvp_fast_moves`";
 const selectChargeMoves = "SELECT * FROM pokemon.pvp_charge_moves";
+const legacyMoves = "SELECT * FROM pokemon.legacy_moves";
 
 const connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "password",
-  database: "pokemon"
+  host: "t89yihg12rw77y6f.cbetxkdyhwsb.us-east-1.rds.amazonaws.com	",
+  user: "qiwlcbe6uzab0j32",
+  password: "huo0gh2vl1jdna4k",
+  port: "3306",
+  database: "qlpetfztplb4quqy"
 });
 
 connection.connect(err => {
@@ -72,6 +74,18 @@ app.get("/chargemoves", (req, res) => {
 
 app.get("/", (req, res) => {
   res.send("hello from the products server");
+});
+
+app.get("/legacymoves", (req, res) => {
+  connection.query(legacyMoves, (err, results) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.json({
+        data: results
+      });
+    }
+  });
 });
 
 app.listen(3036, () => {
