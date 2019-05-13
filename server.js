@@ -9,6 +9,8 @@ const port = process.env.PORT || 3036;
 const app = express();
 app.use(cors());
 app.options("*", cors());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 const selectPokemon = "SELECT * FROM qlpetfztplb4quqy.pokemon;";
 const selectFastMoves = "SELECT * FROM qlpetfztplb4quqy.pvp_fast_moves;";
@@ -76,8 +78,12 @@ app.get("/chargemoves", (req, res) => {
   });
 });
 
+// app.get("/", (req, res) => {
+//   res.sendFile(path.join((__dirname = "client/build/index.html")));
+// });
+
 app.get("/", (req, res) => {
-  res.sendFile(path.join((__dirname, "client/build", "index.html")));
+  res.sendFile(path.join(__dirname + "client/build/index.html"));
 });
 
 app.get("/legacymoves", (req, res) => {
