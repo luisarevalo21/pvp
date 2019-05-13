@@ -77,7 +77,7 @@ app.get("/chargemoves", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("hello from the products server");
+  res.sendFile(path.join(__dirname + "/client/public/index.html"));
 });
 
 app.get("/legacymoves", (req, res) => {
