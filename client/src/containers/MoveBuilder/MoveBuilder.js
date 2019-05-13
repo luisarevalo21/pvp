@@ -56,7 +56,7 @@ class MoveBuilder extends Component {
       .catch(err => {
         console.log("the error is ", err);
       });
-    fetch("https://pvp-move-analysis.herokuapp.com/quickmoves")
+    fetch("https://pvp-move-analysis.herokuapp.com/fastmoves")
       .then(response => response.json())
       .then(response => this.setState({ quick_moves: response.data }))
       .catch(err => {
