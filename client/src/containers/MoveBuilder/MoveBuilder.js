@@ -19,7 +19,9 @@ class MoveBuilder extends Component {
   };
 
   componentDidMount() {
-    fetch("http://localhost:3036/pokemon")
+    fetch(
+      "mysql://qiwlcbe6uzab0j32:huo0gh2vl1jdna4k@t89yihg12rw77y6f.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/pokemon"
+    )
       .then(response => response.json())
       .then(response => {
         let pokemon = {};
@@ -57,7 +59,7 @@ class MoveBuilder extends Component {
         console.log("the error is ", err);
       });
     fetch(
-      "t89yihg12rw77y6f.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3036/fastmoves"
+      "mysql://qiwlcbe6uzab0j32:huo0gh2vl1jdna4k@t89yihg12rw77y6f.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/fastmoves"
     )
       .then(response => response.json())
       .then(response => this.setState({ quick_moves: response.data }))
@@ -65,7 +67,7 @@ class MoveBuilder extends Component {
         console.log(err);
       });
     fetch(
-      "t89yihg12rw77y6f.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3036/fastmoves"
+      "mysql://qiwlcbe6uzab0j32:huo0gh2vl1jdna4k@t89yihg12rw77y6f.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/chargemoves"
     )
       .then(response => response.json())
       .then(response => this.setState({ charge_moves: response.data }))
@@ -73,7 +75,7 @@ class MoveBuilder extends Component {
         console.log(err);
       });
     fetch(
-      "t89yihg12rw77y6f.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3036/fastmoves"
+      "mysql://qiwlcbe6uzab0j32:huo0gh2vl1jdna4k@t89yihg12rw77y6f.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/legacymoves"
     )
       .then(response => response.json())
       .then(response => this.setState({ legacy_moves: response.data }))
