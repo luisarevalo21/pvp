@@ -83,7 +83,7 @@ app.get("/chargemoves", (req, res) => {
 // });
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname + "client/build/index.html"));
+  res.sendFile(path.join(__dirname + "/client/build/index.html"));
 });
 
 app.get("/legacymoves", (req, res) => {
@@ -105,11 +105,11 @@ app.get("/legacymoves", (req, res) => {
 //Static file declaration
 // app.use(express.static(path.join(__dirname, "client/build")));
 
-app.use("/static", express.static(path.join(__dirname, "client/build")));
+// app.use("/static", express.static(path.join(__dirname, "client/build")));
 
-app.use(function(req, res) {
-  res.sendFile(path.join(__dirname, "index.html"));
-});
+// app.use(function(req, res) {
+//   res.sendFile(path.join(__dirname, "index.html"));
+// });
 //production mode
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "client/build")));
