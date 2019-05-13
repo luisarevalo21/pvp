@@ -97,7 +97,9 @@ app.get("/legacymoves", (req, res) => {
 // });
 
 //Static file declaration
-app.use(express.static(path.join(__dirname, "client/build")));
+// app.use(express.static(path.join(__dirname, "client/build")));
+
+app.use("/static", express.static(path.join(__dirname, "client/build")));
 
 //production mode
 if (process.env.NODE_ENV === "production") {
