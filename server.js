@@ -108,7 +108,7 @@ app.get("/legacymoves", (req, res) => {
 app.use("/static", express.static(path.join(__dirname, "client/build")));
 
 app.use(function(req, res) {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 //production mode
 if (process.env.NODE_ENV === "production") {
