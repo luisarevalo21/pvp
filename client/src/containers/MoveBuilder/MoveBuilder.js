@@ -56,25 +56,19 @@ class MoveBuilder extends Component {
       .catch(err => {
         console.log("the error is ", err);
       });
-    fetch(
-      "https://t89yihg12rw77y6f.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3036/quickmoves"
-    )
+    fetch("https://pvp-move-analysis.herokuapp.com/quickmoves")
       .then(response => response.json())
       .then(response => this.setState({ quick_moves: response.data }))
       .catch(err => {
         console.log(err);
       });
-    fetch(
-      "https://t89yihg12rw77y6f.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3036/chargemoves"
-    )
+    fetch("https://pvp-move-analysis.herokuapp.com/chargemoves")
       .then(response => response.json())
       .then(response => this.setState({ charge_moves: response.data }))
       .catch(err => {
         console.log(err);
       });
-    fetch(
-      "https://t89yihg12rw77y6f.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3036/legacymoves"
-    )
+    fetch("https://pvp-move-analysis.herokuapp.com/legacymoves")
       .then(response => response.json())
       .then(response => this.setState({ legacy_moves: response.data }))
       .catch(err => {
