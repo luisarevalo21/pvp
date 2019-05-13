@@ -19,9 +19,7 @@ class MoveBuilder extends Component {
   };
 
   componentDidMount() {
-    fetch(
-      "https://t89yihg12rw77y6f.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3036/pokemon"
-    )
+    fetch("https://pvp-move-analysis.herokuapp.com/pokemon")
       .then(response => response.json())
       .then(response => {
         let pokemon = {};
