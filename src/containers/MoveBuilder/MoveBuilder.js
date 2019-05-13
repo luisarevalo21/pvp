@@ -19,7 +19,7 @@ class MoveBuilder extends Component {
   };
 
   componentDidMount() {
-    fetch("http://localhost:3036/products")
+    fetch("http://localhost:3036/pokemon")
       .then(response => response.json())
       .then(response => {
         let pokemon = {};

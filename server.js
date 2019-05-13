@@ -6,13 +6,13 @@ const app = express();
 app.use(cors());
 app.options("*", cors());
 
-const selectPokemon = "SELECT * FROM pokemon";
-const selectFastMoves = "SELECT * FROM pokemon.`pvp_fast_moves`";
-const selectChargeMoves = "SELECT * FROM pokemon.pvp_charge_moves";
-const legacyMoves = "SELECT * FROM pokemon.legacy_moves";
+const selectPokemon = "SELECT * FROM qlpetfztplb4quqy.pokemon;";
+const selectFastMoves = "SELECT * FROM qlpetfztplb4quqy.pvp_fast_moves;";
+const selectChargeMoves = "SELECT * FROM qlpetfztplb4quqy.pvp_charge_moves;";
+const legacyMoves = "SELECT * FROM qlpetfztplb4quqy.legacy_moves;";
 
 const connection = mysql.createConnection({
-  host: "t89yihg12rw77y6f.cbetxkdyhwsb.us-east-1.rds.amazonaws.com	",
+  host: "t89yihg12rw77y6f.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
   user: "qiwlcbe6uzab0j32",
   password: "huo0gh2vl1jdna4k",
   port: "3306",
@@ -37,7 +37,7 @@ app.use(function(req, res, next) {
   );
   next();
 });
-app.get("/products", (req, res) => {
+app.get("/pokemon", (req, res) => {
   connection.query(selectPokemon, (err, results) => {
     if (err) {
       return res.send(err);
