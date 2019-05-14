@@ -117,7 +117,7 @@ const table = props => {
       return accumulator.concat(currentValue);
       // return accumulator[currentValue];
     });
-  // console.log("charge moves array is ", chargeMoveData);
+  console.log("charge moves array is ", chargeMoveData);
 
   let basePower = [];
 

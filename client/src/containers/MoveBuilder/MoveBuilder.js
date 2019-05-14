@@ -22,8 +22,8 @@ class MoveBuilder extends Component {
     //FOR TESTING
     //change all fetches for localhost http://localhost:3036/pokemon :
     //FOR PRODUCTION
-    //or database: https://pvp-move-analysis.herokuapp.com/fastmoves
-    fetch("https://pvp-move-analysis.herokuapp.com/pokemon")
+    //database: https://pvp-move-analysis.herokuapp.com/fastmoves
+    fetch("http://localhost:3036/pokemon")
       .then(response => response.json())
       .then(response => {
         let pokemon = {};
