@@ -87,7 +87,7 @@ const table = props => {
       // return accumulator[currentValue];
     });
 
-  // console.log("quick move data is data", quickMoveData);
+  console.log("quick move data is data", quickMoveData);
   // console.log(
   //   "quick move data",
   //   Math.max.apply(null, quickMoveData.map(element => element.basePower))
@@ -129,9 +129,9 @@ const table = props => {
   let energyPerDuration = [];
   let damagePerDuration = [];
   basePower = quickMoveData.map(el => {
-    array.push(el.basePower);
+    // array.push(el.basePower);
 
-    // console.log("printing el now", el.basePower);
+    console.log("printing el now", el.basePower);
     return <td key={el.basePower + Math.random()}>{el.basePower}</td>;
   });
 
@@ -159,6 +159,7 @@ const table = props => {
         "table",
         "table-condensed",
         "table-striped",
+        "table-responsive",
         classes.Table
       ].join(" ")}
     >
@@ -168,14 +169,17 @@ const table = props => {
           <tr>
             <th key={1}>Stats</th>
 
-            {quickMoves.map(element => {
+            {quickMoveData.map(element => {
               // console.log("element inside quicmoves", legacyMoves);
               // console.log("key is", element.key);
-              if (legacyMoves.includes(element.key)) {
+              if (legacyMoves.includes(element.fastMoveName)) {
                 return (
-                  <th key={element.key + Math.random()}>{element.key}*</th>
+                  <th key={element.fastMoveName + Math.random()}>
+                    {element.fastMoveName}*
+                  </th>
                 );
               } else {
+                console.log("element is", element.fastMoveName);
                 // console.log(
                 //   "HERE IS THE VLUE NOW",
                 // legacyMoves.map(legacy => {
@@ -185,7 +189,11 @@ const table = props => {
                 //   if (element.key === legacy) {
                 //     return <th key={element.key}>{element.key}*</th>;
                 //   } else {
-                return <th key={element.key + Math.random()}>{element.key}</th>;
+                return (
+                  <th key={element.fastMoveName + Math.random()}>
+                    {element.fastMoveName}
+                  </th>
+                );
               }
             })}
             {/* 

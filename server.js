@@ -12,18 +12,50 @@ app.options("*", cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const selectPokemon = "SELECT * FROM qlpetfztplb4quqy.pokemon;";
-const selectFastMoves = "SELECT * FROM qlpetfztplb4quqy.pvp_fast_moves;";
-const selectChargeMoves = "SELECT * FROM qlpetfztplb4quqy.pvp_charge_moves;";
-const legacyMoves = "SELECT * FROM qlpetfztplb4quqy.legacy_moves;";
+let selectPokemon = "SELECT * FROM qlpetfztplb4quqy.pokemon;";
+let selectFastMoves = "SELECT * FROM qlpetfztplb4quqy.pvp_fast_moves;";
+let selectChargeMoves = "SELECT * FROM qlpetfztplb4quqy.pvp_charge_moves;";
+let legacyMoves = "SELECT * FROM qlpetfztplb4quqy.legacy_moves;";
+let connection = null;
+if (process.env.NODE_ENV === "production") {
+  connection = mysql.createConnection({
+    host: "t89yihg12rw77y6f.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    user: "qiwlcbe6uzab0j32",
+    password: "huo0gh2vl1jdna4k",
+    port: "3306",
+    database: "qlpetfztplb4quqy"
+  });
+  app.get("/", (req, res) => {
+    res.sendFile(path.join((__dirname = "client/build/index.html")));
+  });
 
-const connection = mysql.createConnection({
-  host: "t89yihg12rw77y6f.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-  user: "qiwlcbe6uzab0j32",
-  password: "huo0gh2vl1jdna4k",
-  port: "3306",
-  database: "qlpetfztplb4quqy"
-});
+  selectPokemon = "SELECT * FROM qlpetfztplb4quqy.pokemon;";
+  selectFastMoves = "SELECT * FROM qlpetfztplb4quqy.pvp_fast_moves;";
+  selectChargeMoves = "SELECT * FROM qlpetfztplb4quqy.pvp_charge_moves;";
+  legacyMoves = "SELECT * FROM qlpetfztplb4quqy.legacy_moves;";
+
+  // app.use(express.static(path.join(__dirname, "client/build")));
+}
+// Serve any static files
+else {
+  connection = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "password",
+    port: "3306",
+    database: "pokemon"
+  });
+  app.get("/", (req, res) => {
+    res.send("hello from /");
+    console.log("hello from /");
+    // res.sendFile(path.join((__dirname = "client/public/index.html")));
+  });
+
+  selectPokemon = "SELECT * FROM pokemon.pokemon";
+  selectFastMoves = "SELECT * FROM pokemon.pvp_fast_moves;";
+  selectChargeMoves = "SELECT * FROM pokemon.pvp_charge_moves";
+  legacyMoves = "SELECT * FROM pokemon.legacy_moves;";
+}
 
 connection.connect(err => {
   if (err) {
@@ -82,9 +114,9 @@ app.get("/chargemoves", (req, res) => {
 //   res.sendFile(path.join((__dirname = "client/build/index.html")));
 // });
 
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname + "/client/build/index.html"));
-});
+// app.get("/", (req, res) => {
+//   res.sendFile(path.join(__dirname + "/client/build/index.html"));
+// });
 
 app.get("/legacymoves", (req, res) => {
   connection.query(legacyMoves, (err, results) => {
@@ -111,10 +143,10 @@ app.get("/legacymoves", (req, res) => {
 //   res.sendFile(path.join(__dirname, "index.html"));
 // });
 //production mode
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "client/build")));
-  //
-}
+// if (process.env.NODE_ENV === "production") {
+//   // app.use(express.static(path.join(__dirname, "client/build")));
+//   //
+// }
 // app.get("*", (req, res) => {
 //   res.sendfile(path.join((__dirname, "client/build", "index.html")));
 // });

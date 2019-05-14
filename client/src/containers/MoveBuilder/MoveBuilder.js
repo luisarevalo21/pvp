@@ -19,6 +19,10 @@ class MoveBuilder extends Component {
   };
 
   componentDidMount() {
+    //FOR TESTING
+    //change all fetches for localhost http://localhost:3036/pokemon :
+    //FOR PRODUCTION
+    //or database: https://pvp-move-analysis.herokuapp.com/fastmoves
     fetch("https://pvp-move-analysis.herokuapp.com/pokemon")
       .then(response => response.json())
       .then(response => {
