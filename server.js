@@ -17,45 +17,47 @@ let selectFastMoves = "SELECT * FROM qlpetfztplb4quqy.pvp_fast_moves;";
 let selectChargeMoves = "SELECT * FROM qlpetfztplb4quqy.pvp_charge_moves;";
 let legacyMoves = "SELECT * FROM qlpetfztplb4quqy.legacy_moves;";
 let connection = null;
-if (process.env.NODE_ENV === "production") {
-  connection = mysql.createConnection({
-    host: "t89yihg12rw77y6f.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-    user: "qiwlcbe6uzab0j32",
-    password: "huo0gh2vl1jdna4k",
-    port: "3306",
-    database: "qlpetfztplb4quqy"
-  });
-  app.get("/", (req, res) => {
-    res.sendFile(path.join((__dirname = "client/build/index.html")));
-  });
+// if (process.env.NODE_ENV === "production") {
+//   console.log("inside the if");
+connection = mysql.createConnection({
+  host: "t89yihg12rw77y6f.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+  user: "qiwlcbe6uzab0j32",
+  password: "huo0gh2vl1jdna4k",
+  port: "3306",
+  database: "qlpetfztplb4quqy"
+});
+app.get("/", (req, res) => {
+  res.sendFile(path.join((__dirname = "client/build/index.html")));
+});
 
-  selectPokemon = "SELECT * FROM qlpetfztplb4quqy.pokemon;";
-  selectFastMoves = "SELECT * FROM qlpetfztplb4quqy.pvp_fast_moves;";
-  selectChargeMoves = "SELECT * FROM qlpetfztplb4quqy.pvp_charge_moves;";
-  legacyMoves = "SELECT * FROM qlpetfztplb4quqy.legacy_moves;";
+selectPokemon = "SELECT * FROM qlpetfztplb4quqy.pokemon";
+selectFastMoves = "SELECT * FROM qlpetfztplb4quqy.pvp_fast_moves";
+selectChargeMoves = "SELECT * FROM qlpetfztplb4quqy.pvp_charge_moves";
+legacyMoves = "SELECT * FROM qlpetfztplb4quqy.legacy_moves";
 
-  // app.use(express.static(path.join(__dirname, "client/build")));
-}
+// app.use(express.static(path.join(__dirname, "client/build")));
+//}
 // Serve any static files
-else {
-  connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "password",
-    port: "3306",
-    database: "pokemon"
-  });
-  app.get("/", (req, res) => {
-    res.send("hello from /");
-    console.log("hello from /");
-    // res.sendFile(path.join((__dirname = "client/public/index.html")));
-  });
+// else {
+console.log("inside the else");
+connection = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "password",
+  port: "3306",
+  database: "pokemon"
+});
+app.get("/", (req, res) => {
+  res.send("hello from /");
+  console.log("hello from /");
+  // res.sendFile(path.join((__dirname = "client/public/index.html")));
+});
 
-  selectPokemon = "SELECT * FROM pokemon.pokemon";
-  selectFastMoves = "SELECT * FROM pokemon.pvp_fast_moves;";
-  selectChargeMoves = "SELECT * FROM pokemon.pvp_charge_moves";
-  legacyMoves = "SELECT * FROM pokemon.legacymoves";
-}
+selectPokemon = "SELECT * FROM pokemon.pokemon";
+selectFastMoves = "SELECT * FROM pokemon.pvp_fast_moves;";
+selectChargeMoves = "SELECT * FROM pokemon.pvp_charge_moves";
+legacyMoves = "SELECT * FROM pokemon.legacymoves";
+//}
 
 connection.connect(err => {
   if (err) {
