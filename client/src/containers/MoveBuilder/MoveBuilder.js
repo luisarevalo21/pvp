@@ -126,11 +126,11 @@ class MoveBuilder extends Component {
 
   render() {
     let table = null;
-    let element = [];
+    let pokemonNames = [];
     // console.log("the state of pokemon is", this.state.legacy_moves);
     if (this.state.pokemon) {
-      element = [...this.state.pokemon];
-      element.push(
+      pokemonNames = [...this.state.pokemon];
+      pokemonNames.push(
         this.state.pokemon.map(element => {
           return { value: element.Pokemon, label: element.Pokemon };
         })
@@ -140,11 +140,11 @@ class MoveBuilder extends Component {
     if (this.state.selectedValue) {
       console.log("printing the value now", this.state.selectedValue);
       const data = this.state.pokemon.filter(
-        element => element.Pokemon === this.state.selectedValue.value
+        element => element.pokemonName === this.state.selectedValue.value
       );
       console.log("this.state.legacy moves", this.state.legacy_moves);
       const selectedPokemon = this.state.legacy_moves.filter(element => {
-        return element.moveName === this.state.selectedValue.value;
+        return element.pokemonName === this.state.selectedValue.value;
       });
       const legacy_moves = Object.values(selectedPokemon[0]);
       console.log("moves", legacy_moves);
@@ -170,7 +170,7 @@ class MoveBuilder extends Component {
       <Input
         inputType="select"
         selectedValue={this.state.selectedOption}
-        moves={element}
+        pokemon={pokemonNames}
         changed={this.handleChange}
       />
     );

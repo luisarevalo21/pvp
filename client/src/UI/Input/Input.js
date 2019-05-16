@@ -8,8 +8,8 @@ const input = props => {
   // console.log("props.moves", props.moves);
   // const options = [...props.moves];
 
-  const options = props.moves.map(move => {
-    return { value: move.Pokemon, label: move.Pokemon };
+  const options = props.pokemon.map(element => {
+    return { value: element.pokemonName, label: element.pokemonName };
   });
 
   // console.log("options", options);
