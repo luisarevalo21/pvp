@@ -2,23 +2,26 @@ import React from "react";
 import classes from "./Table.module.css";
 
 const table = props => {
-  // console.log("the moves are", props.quickMoves);
-  // console.log("selected pokemon ", props.selectedPokemon);
-  // console.log("legacy moves are", props.legacyMoves);
+  console.log("the moves are", props.quickMoves);
+  console.log("selected pokemon ", props.selectedPokemon);
+  console.log("legacy moves are", props.legacyMoves);
 
   const quickMoves = [];
   const chargeMoves = [];
   let quickMoveData = [];
   let chargeMoveData = [];
-  let legacyMoves = [];
-  props.legacyMoves.map(element => {
-    legacyMoves.push(element.legacyName);
-  });
+  // let legacyMoves = [...props.legacyMoves];
 
-  // console.log("legayc moves arrat is ", legacyMoves);
   const copy = { ...props.selectedPokemon[0] };
-  // console.log("copy", copy);
-  // let filertedData = {};
+
+  // console.log("copy is copy", copy);
+  // const moves = props.legacyMoves.filter(element => {
+  //   return element.moveName === copy.Pokemon;
+  // });
+
+  // // const legacy_moves = Object.values(moves[0]);
+  // console.log("moves", legacy_moves);
+
   for (let key in copy) {
     // console.log("the key is", key);
     if (
@@ -43,12 +46,13 @@ const table = props => {
     ) {
       chargeMoves.push({ key: copy[key] });
     }
-    // else if (
+    // if (
     //   key === "legacy move 1" ||
     //   key === "legacy move 2" ||
     //   key === "legacy move 3" ||
     //   key === "legacy move 4" ||
-    //   key === "legacy move 5"
+    //   key === "legacy move 5" ||
+    //   key === "legacy move 6"
     // ) {
     //   legacyMoves.push(copy[key]);
     // }
@@ -159,126 +163,138 @@ const table = props => {
         "table",
         "table-condensed",
         "table-striped",
-        "table-responsive",
         classes.Table
       ].join(" ")}
     >
-      <h3> Quick Moves</h3>
-      <table>
-        <thead>
-          <tr>
-            <th key={1}>Stats</th>
+      <div className="table-responsive">
+        <h3> Quick Moves</h3>
+        <table>
+          <thead>
+            <tr>
+              <th key={1}>Stats</th>
 
-            {quickMoveData.map(element => {
-              // console.log("element inside quicmoves", legacyMoves);
-              // console.log("key is", element.key);
-              if (legacyMoves.includes(element.fastMoveName)) {
-                return (
-                  <th key={element.fastMoveName + Math.random()}>
-                    {element.fastMoveName}*
-                  </th>
-                );
-              } else {
-                console.log("element is", element.fastMoveName);
-                // console.log(
-                //   "HERE IS THE VLUE NOW",
-                // legacyMoves.map(legacy => {
-                //   console.log("element .key ", element.key);
-                //   console.log("legacy ", legacy);
+              {quickMoveData.map(element => {
+                // console.log("element inside quicmoves", data);
+                console.log("key is", element);
+                if (props.legacyMoves.includes(element.fastMoveName)) {
+                  console.log("found a legacy move");
+                  return (
+                    <th key={element.fastMoveName + Math.random()}>
+                      {element.fastMoveName}*
+                    </th>
+                  );
+                } else {
+                  console.log("element is", element.fastMoveName);
+                  // console.log(
+                  //   "HERE IS THE VLUE NOW",
+                  // legacyMoves.map(legacy => {
+                  //   console.log("element .key ", element.key);
+                  //   console.log("legacy ", legacy);
 
-                //   if (element.key === legacy) {
-                //     return <th key={element.key}>{element.key}*</th>;
-                //   } else {
-                return (
-                  <th key={element.fastMoveName + Math.random()}>
-                    {element.fastMoveName}
-                  </th>
-                );
-              }
-            })}
-            {/* 
+                  //   if (element.key === legacy) {
+                  //     return <th key={element.key}>{element.key}*</th>;
+                  //   } else {
+                  return (
+                    <th key={element.fastMoveName + Math.random()}>
+                      {element.fastMoveName}
+                    </th>
+                  );
+                }
+              })}
+              {/* 
             {data.map((el, index) => {
               return <th key={Math.random()}>{el} </th>;
             })} */}
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td key={2}>Base Power</td>
-            {basePower}
-          </tr>
-          <tr>
-            <td key={3}>Duration</td>
-            {duration}
-          </tr>
-          <tr>
-            <td key={4}>Energy Delta</td>
-            {energyDelta}
-          </tr>
-          <tr>
-            <td key={5}>Move Cooldown</td>
-            {moveCooldown}
-          </tr>
-          <tr>
-            <td key={6}>Energy Per Duration</td>
-            {energyPerDuration}
-          </tr>
-          <tr>
-            <td key={7}>Damage Per Duration</td>
-            {damagePerDuration}
-          </tr>
-        </tbody>
-      </table>
-      <p>* indicates legacy move</p>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td key={2}>Base Power</td>
+              {basePower}
+            </tr>
+            <tr>
+              <td key={3}>Duration</td>
+              {duration}
+            </tr>
+            <tr>
+              <td key={4}>Energy Delta</td>
+              {energyDelta}
+            </tr>
+            <tr>
+              <td key={5}>Move Cooldown</td>
+              {moveCooldown}
+            </tr>
+            <tr>
+              <td key={6}>Energy Per Duration</td>
+              {energyPerDuration}
+            </tr>
+            <tr>
+              <td key={7}>Damage Per Duration</td>
+              {damagePerDuration}
+            </tr>
+          </tbody>
+        </table>
+        <p>* indicates legacy move</p>
+      </div>
+
       <br />
-      <h3>Charge Moves</h3>
-      <table>
-        <thead>
-          <tr>
-            <th key={8}>Stats</th>
-            {chargeMoveData.map(element => {
-              if (legacyMoves.includes(element.chargeMoveName)) {
+
+      <div className="table-responsive">
+        <h3>Charge Moves</h3>
+        <table>
+          <thead>
+            <tr>
+              <th key={8}>Stats</th>
+              {chargeMoveData.map(element => {
+                if (props.legacyMoves.includes(element.chargeMoveName)) {
+                  return (
+                    <th key={element.chargeMoveName}>
+                      {element.chargeMoveName}*
+                    </th>
+                  );
+                } else {
+                  return (
+                    <th key={element.chargeMoveName}>
+                      {element.chargeMoveName}
+                    </th>
+                  );
+                }
+              })}
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td key={9}>Base Power</td>
+              {chargeMoveData.map(element => {
+                // console.log("the eelement is", element);
+                return (
+                  <th key={element.chargeMoveName}>{element.basePower}</th>
+                );
+              })}
+            </tr>
+            <tr>
+              <td key={10}>Charge Energy</td>
+              {chargeMoveData.map(element => {
+                // console.log(element);
+                return <th key={element.chargeMoveName}>{element.energy}</th>;
+              })}
+            </tr>
+            <tr>
+              <td key={11}>Damage Per Energy</td>
+              {chargeMoveData.map(element => {
+                // console.log(element);
                 return (
                   <th key={element.chargeMoveName}>
-                    {element.chargeMoveName}*
+                    {element.damagePerEnergy}
                   </th>
                 );
-              } else {
-                return (
-                  <th key={element.chargeMoveName}>{element.chargeMoveName}</th>
-                );
-              }
-            })}
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td key={9}>Base Power</td>
-            {chargeMoveData.map(element => {
-              // console.log("the eelement is", element);
-              return <th key={element.chargeMoveName}>{element.basePower}</th>;
-            })}
-          </tr>
-          <tr>
-            <td key={10}>Charge Energy</td>
-            {chargeMoveData.map(element => {
-              // console.log(element);
-              return <th key={element.chargeMoveName}>{element.energy}</th>;
-            })}
-          </tr>
-          <tr>
-            <td key={11}>Damage Per Energy</td>
-            {chargeMoveData.map(element => {
-              // console.log(element);
-              return (
-                <th key={element.chargeMoveName}>{element.damagePerEnergy}</th>
-              );
-            })}
-          </tr>
-        </tbody>
-      </table>
-      <p>* indicates legacy move</p>
+              })}
+            </tr>
+          </tbody>
+        </table>
+        <p>* indicates legacy move</p>
+      </div>
     </div>
   );
 };

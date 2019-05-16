@@ -24,6 +24,8 @@ class MoveBuilder extends Component {
     //FOR PRODUCTION
     //database: https://pvp-move-analysis.herokuapp.com/fastmoves
     fetch("http://localhost:3036/pokemon")
+      // fetch("https://pvp-move-analysis.herokuapp.com/pokemon")
+
       .then(response => response.json())
       .then(response => {
         let pokemon = {};
@@ -60,19 +62,22 @@ class MoveBuilder extends Component {
       .catch(err => {
         console.log("the error is ", err);
       });
-    fetch("https://pvp-move-analysis.herokuapp.com/fastmoves")
+    // fetch("https://pvp-move-analysis.herokuapp.com/fastmoves")
+    fetch("http://localhost:3036/fastmoves")
       .then(response => response.json())
       .then(response => this.setState({ quick_moves: response.data }))
       .catch(err => {
         console.log(err);
       });
-    fetch("https://pvp-move-analysis.herokuapp.com/chargemoves")
+    // fetch("https://pvp-move-analysis.herokuapp.com/chargemoves")
+    fetch("http://localhost:3036/chargemoves")
       .then(response => response.json())
       .then(response => this.setState({ charge_moves: response.data }))
       .catch(err => {
         console.log(err);
       });
-    fetch("https://pvp-move-analysis.herokuapp.com/legacymoves")
+    // fetch("https://pvp-move-analysis.herokuapp.com/legacymoves")
+    fetch("http://localhost:3036/legacymoves")
       .then(response => response.json())
       .then(response => this.setState({ legacy_moves: response.data }))
       .catch(err => {
@@ -122,7 +127,7 @@ class MoveBuilder extends Component {
   render() {
     let table = null;
     let element = [];
-    // console.log("the state of pokemon is", this.state.pokemon);
+    // console.log("the state of pokemon is", this.state.legacy_moves);
     if (this.state.pokemon) {
       element = [...this.state.pokemon];
       element.push(
@@ -137,13 +142,23 @@ class MoveBuilder extends Component {
       const data = this.state.pokemon.filter(
         element => element.Pokemon === this.state.selectedValue.value
       );
+      console.log("this.state.legacy moves", this.state.legacy_moves);
+      const selectedPokemon = this.state.legacy_moves.filter(element => {
+        return element.moveName === this.state.selectedValue.value;
+      });
+      const legacy_moves = Object.values(selectedPokemon[0]);
+      console.log("moves", legacy_moves);
+
+      // const moves = props.legacyMoves.filter(element => {
+      //   return element.moveName === copy.Pokemon;
+      // });
 
       table = (
         <Table
           selectedPokemon={data}
           quickMoves={this.state.quick_moves}
           chargeMoves={this.state.charge_moves}
-          legacyMoves={this.state.legacy_moves}
+          legacyMoves={legacy_moves}
         />
       );
     }

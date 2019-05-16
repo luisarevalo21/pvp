@@ -54,7 +54,7 @@ else {
   selectPokemon = "SELECT * FROM pokemon.pokemon";
   selectFastMoves = "SELECT * FROM pokemon.pvp_fast_moves;";
   selectChargeMoves = "SELECT * FROM pokemon.pvp_charge_moves";
-  legacyMoves = "SELECT * FROM pokemon.legacy_moves;";
+  legacyMoves = "SELECT * FROM pokemon.legacymoves";
 }
 
 connection.connect(err => {
