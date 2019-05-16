@@ -4,7 +4,7 @@ const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql");
 const path = require("path");
-const port = process.env.PORT || 3036;
+const port = process.env.PORT || 3306;
 
 const app = express();
 app.use(cors());
@@ -39,24 +39,24 @@ legacyMoves = "SELECT * FROM qlpetfztplb4quqy.legacy_moves";
 //}
 // Serve any static files
 // else {
-console.log("inside the else");
-connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "password",
-  port: "3306",
-  database: "pokemon"
-});
-app.get("/", (req, res) => {
-  res.send("hello from /");
-  console.log("hello from /");
-  // res.sendFile(path.join((__dirname = "client/public/index.html")));
-});
+// console.log("inside the else");
+// connection = mysql.createConnection({
+//   host: "localhost",
+//   user: "root",
+//   password: "password",
+//   port: "3306",
+//   database: "pokemon"
+// });
+// app.get("/", (req, res) => {
+//   res.send("hello from /");
+//   console.log("hello from /");
+//   // res.sendFile(path.join((__dirname = "client/public/index.html")));
+// });
 
-selectPokemon = "SELECT * FROM pokemon.pokemon";
-selectFastMoves = "SELECT * FROM pokemon.pvp_fast_moves;";
-selectChargeMoves = "SELECT * FROM pokemon.pvp_charge_moves";
-legacyMoves = "SELECT * FROM pokemon.legacymoves";
+// selectPokemon = "SELECT * FROM pokemon.pokemon";
+// selectFastMoves = "SELECT * FROM pokemon.pvp_fast_moves;";
+// selectChargeMoves = "SELECT * FROM pokemon.pvp_charge_moves";
+// legacyMoves = "SELECT * FROM pokemon.legacymoves";
 //}
 
 connection.connect(err => {
