@@ -213,7 +213,7 @@ const table = props => {
               {basePower}
             </tr>
             <tr>
-              <td key={3}>Duration</td>
+              <td key={3}>Turn</td>
               {duration}
             </tr>
             <tr>
@@ -225,11 +225,11 @@ const table = props => {
               {moveCooldown}
             </tr>
             <tr>
-              <td key={6}>Energy Per Duration</td>
+              <td key={6}>Energy Per Turn</td>
               {energyPerDuration}
             </tr>
             <tr>
-              <td key={7}>Damage Per Duration</td>
+              <td key={7}>Damage Per Turn</td>
               {damagePerDuration}
             </tr>
           </tbody>
