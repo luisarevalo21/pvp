@@ -27,10 +27,10 @@ connection = mysql.createConnection({
   database: "qlpetfztplb4quqy"
 });
 
-selectPokemon = "SELECT * FROM qlpetfztplb4quqy.pokemon";
-selectFastMoves = "SELECT * FROM qlpetfztplb4quqy.pvp_fast_moves";
-selectChargeMoves = "SELECT * FROM qlpetfztplb4quqy.pvp_charge_moves";
-legacyMoves = "SELECT * FROM qlpetfztplb4quqy.legacy_moves";
+// selectPokemon = "SELECT * FROM qlpetfztplb4quqy.pokemon";
+// selectFastMoves = "SELECT * FROM qlpetfztplb4quqy.pvp_fast_moves";
+// selectChargeMoves = "SELECT * FROM qlpetfztplb4quqy.pvp_charge_moves";
+// legacyMoves = "SELECT * FROM qlpetfztplb4quqy.legacy_moves";
 
 // app.use(express.static(path.join(__dirname, "client/build")));
 //}
@@ -87,7 +87,9 @@ app.get("/pokemon", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join((__dirname = "client/build/index.html")));
+  res.sendFile(__dirname + "client/build/index.html");
+
+  // res.sendFile(path.join((__dirname = "client/build/index.html")));
 });
 app.get("/fastmoves", (req, res) => {
   connection.query(selectFastMoves, (err, results) => {
