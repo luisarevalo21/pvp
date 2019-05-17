@@ -26,9 +26,6 @@ connection = mysql.createConnection({
   port: "3306",
   database: "qlpetfztplb4quqy"
 });
-app.get("/", (req, res) => {
-  res.sendFile(path.join((__dirname = "client/build/index.html")));
-});
 
 selectPokemon = "SELECT * FROM qlpetfztplb4quqy.pokemon";
 selectFastMoves = "SELECT * FROM qlpetfztplb4quqy.pvp_fast_moves";
@@ -89,6 +86,9 @@ app.get("/pokemon", (req, res) => {
   });
 });
 
+app.get("/", (req, res) => {
+  res.sendFile(path.join((__dirname = "client/build/index.html")));
+});
 app.get("/fastmoves", (req, res) => {
   connection.query(selectFastMoves, (err, results) => {
     if (err) {
