@@ -137,16 +137,22 @@ class MoveBuilder extends Component {
     }
 
     if (this.state.selectedValue) {
+      let legacy_moves = [];
       console.log("printing the value now", this.state.selectedValue);
       const data = this.state.pokemon.filter(
         element => element.pokemonName === this.state.selectedValue.value
       );
+
+      console.log("this.states.selected value", this.state.selectedValue);
       console.log("this.state.legacy moves", this.state.legacy_moves);
       const selectedPokemon = this.state.legacy_moves.filter(element => {
         return element.pokemonName === this.state.selectedValue.value;
       });
-      const legacy_moves = Object.values(selectedPokemon[0]);
-      console.log("moves", legacy_moves);
+      if (selectedPokemon.length !== 0) {
+        console.log("seleted pokemon", selectedPokemon);
+        legacy_moves = Object.values(selectedPokemon[0]);
+        console.log("moves", legacy_moves);
+      }
 
       // const moves = props.legacyMoves.filter(element => {
       //   return element.moveName === copy.Pokemon;
