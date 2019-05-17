@@ -12,10 +12,10 @@ app.options("*", cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-let selectPokemon = "SELECT * FROM qlpetfztplb4quqy.pokemon;";
-let selectFastMoves = "SELECT * FROM qlpetfztplb4quqy.pvp_fast_moves;";
-let selectChargeMoves = "SELECT * FROM qlpetfztplb4quqy.pvp_charge_moves;";
-let legacyMoves = "SELECT * FROM qlpetfztplb4quqy.legacy_moves;";
+let selectPokemon = "SELECT * FROM qlpetfztplb4quqy.pokemon";
+let selectFastMoves = "SELECT * FROM qlpetfztplb4quqy.pvp_fast_moves";
+let selectChargeMoves = "SELECT * FROM qlpetfztplb4quqy.pvp_charge_moves";
+let legacyMoves = "SELECT * FROM qlpetfztplb4quqy.legacy_moves";
 let connection = null;
 // if (process.env.NODE_ENV === "production") {
 //   console.log("inside the if");
@@ -41,7 +41,7 @@ connection = mysql.createConnection({
 //   host: "localhost",
 //   user: "root",
 //   password: "password",
-//   port: "3306",
+//   port: "3036",
 //   database: "pokemon"
 // });
 // app.get("/", (req, res) => {
@@ -87,9 +87,9 @@ app.get("/pokemon", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/client/build/index.html");
+  // res.sendFile(__dirname + "/client/build/index.html");
 
-  // res.sendFile(path.join((__dirname = "client/build/index.html")));
+  res.sendFile(path.join((__dirname = "/client/build/index.html")));
 });
 app.get("/fastmoves", (req, res) => {
   connection.query(selectFastMoves, (err, results) => {
