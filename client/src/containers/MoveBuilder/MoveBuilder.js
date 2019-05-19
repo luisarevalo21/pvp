@@ -79,8 +79,8 @@ class MoveBuilder extends Component {
       .catch(err => {
         console.log(err);
       });
-    // fetch("https://pvp-move-analysis.herokuapp.com/legacymoves")
-    fetch("http://localhost:3036/mewtable")
+    fetch("https://pvp-move-analysis.herokuapp.com/mewtable")
+      // fetch("http://localhost:3036/mewtable")
       .then(response => response.json())
       .then(response => this.setState({ mew_data: response.data }))
       .catch(err => {
