@@ -1,13 +1,9 @@
 import React, { Component } from "react";
-import MoveData from "../../UI/MoveData/MoveData";
 import Input from "../../UI/Input/Input";
 import classes from "./MoveBuilder.module.css";
-import Header from "../../UI/Header/Header";
 import Table from "../../UI/Table/Table";
-import axios from "../../axios";
 import Spinner from "../../UI/Spinner/Spinner";
-import QuickMoves from "../../QuickMoves";
-import Pokemon from "../../Pokemon";
+import MewTable from "../../UI/MewTable/MewTable";
 
 class MoveBuilder extends Component {
   state = {
@@ -15,7 +11,8 @@ class MoveBuilder extends Component {
     selectedOption: null,
     quick_moves: [],
     charge_moves: [],
-    legacy_moves: []
+    legacy_moves: [],
+    mew_data: []
   };
 
   componentDidMount() {
@@ -82,6 +79,13 @@ class MoveBuilder extends Component {
       .catch(err => {
         console.log(err);
       });
+    // fetch("https://pvp-move-analysis.herokuapp.com/legacymoves")
+    fetch("http://localhost:3036/mewtable")
+      .then(response => response.json())
+      .then(response => this.setState({ mew_data: response.data }))
+      .catch(err => {
+        console.log(err);
+      });
 
     // this.getData();
     // axios
@@ -137,35 +141,46 @@ class MoveBuilder extends Component {
     }
 
     if (this.state.selectedValue) {
-      let legacy_moves = [];
-      console.log("printing the value now", this.state.selectedValue);
-      const data = this.state.pokemon.filter(
-        element => element.pokemonName === this.state.selectedValue.value
-      );
+      if (this.state.selectedValue.value === "Mew") {
+        table = (
+          <MewTable
+            selectedPokemon={this.state.mew_data}
+            quickMoves={this.state.quick_moves}
+            chargeMoves={this.state.charge_moves}
+          />
+        );
+        console.log("mew was pressed");
+      } else {
+        let legacy_moves = [];
+        // console.log("printing the value now", this.state.selectedValue);
+        const data = this.state.pokemon.filter(
+          element => element.pokemonName === this.state.selectedValue.value
+        );
 
-      console.log("this.states.selected value", this.state.selectedValue);
-      console.log("this.state.legacy moves", this.state.legacy_moves);
-      const selectedPokemon = this.state.legacy_moves.filter(element => {
-        return element.pokemonName === this.state.selectedValue.value;
-      });
-      if (selectedPokemon.length !== 0) {
-        console.log("seleted pokemon", selectedPokemon);
-        legacy_moves = Object.values(selectedPokemon[0]);
-        console.log("moves", legacy_moves);
+        // console.log("this.states.selected value", this.state.selectedValue);
+        // console.log("this.state.legacy moves", this.state.legacy_moves);
+        const selectedPokemon = this.state.legacy_moves.filter(element => {
+          return element.pokemonName === this.state.selectedValue.value;
+        });
+        if (selectedPokemon.length !== 0) {
+          // console.log("seleted pokemon", selectedPokemon);
+          legacy_moves = Object.values(selectedPokemon[0]);
+          // console.log("moves", legacy_moves);
+        }
+
+        // const moves = props.legacyMoves.filter(element => {
+        //   return element.moveName === copy.Pokemon;
+        // });
+
+        table = (
+          <Table
+            selectedPokemon={data}
+            quickMoves={this.state.quick_moves}
+            chargeMoves={this.state.charge_moves}
+            legacyMoves={legacy_moves}
+          />
+        );
       }
-
-      // const moves = props.legacyMoves.filter(element => {
-      //   return element.moveName === copy.Pokemon;
-      // });
-
-      table = (
-        <Table
-          selectedPokemon={data}
-          quickMoves={this.state.quick_moves}
-          chargeMoves={this.state.charge_moves}
-          legacyMoves={legacy_moves}
-        />
-      );
     }
     // console.log("this.state.selctedvalue", this.state.selectedValue);
 

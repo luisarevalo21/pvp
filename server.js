@@ -24,6 +24,8 @@ if (process.env.NODE_ENV === "production") {
   selectFastMoves = "SELECT * FROM qlpetfztplb4quqy.pvp_fast_moves;";
   selectChargeMoves = "SELECT * FROM qlpetfztplb4quqy.pvp_charge_moves;";
   legacyMoves = "SELECT * FROM qlpetfztplb4quqy.legacy_moves;";
+  mewtable = "SELECT * FROM qlpetfztplb4quqy.Mew_table;";
+
   connection = mysql.createConnection({
     host: "t89yihg12rw77y6f.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     user: "qiwlcbe6uzab0j32",
@@ -40,6 +42,7 @@ if (process.env.NODE_ENV === "production") {
   selectFastMoves = "SELECT * FROM pokemon.pvp_fast_moves";
   selectChargeMoves = "SELECT * FROM pokemon.pvp_charge_moves";
   legacyMoves = "SELECT * FROM pokemon.legacymoves";
+  mewtable = "SELECT * FROM pokemon.Mew_table;";
   connection = mysql.createConnection({
     host: "localhost",
     user: "root",
@@ -111,6 +114,17 @@ app.get("/chargemoves", (req, res) => {
 
 app.get("/legacymoves", (req, res) => {
   connection.query(legacyMoves, (err, results) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.json({
+        data: results
+      });
+    }
+  });
+});
+app.get("/mewtable", (req, res) => {
+  connection.query(mewtable, (err, results) => {
     if (err) {
       return res.send(err);
     } else {
