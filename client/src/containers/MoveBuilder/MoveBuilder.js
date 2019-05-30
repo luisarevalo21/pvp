@@ -1,9 +1,12 @@
 import React, { Component } from "react";
-import Input from "../../UI/Input/Input";
+import Input from "../../components/UI/Input/Input";
 import classes from "./MoveBuilder.module.css";
-import Table from "../../UI/Table/Table";
-import Spinner from "../../UI/Spinner/Spinner";
-import MewTable from "../../UI/MewTable/MewTable";
+import Table from "../../components/UI/Table/Table";
+import Spinner from "../../components/UI/Spinner/Spinner";
+import MewTable from "../../components/UI/MewTable/MewTable";
+import Toolbar from "../../components/UI/Navigation/Toolbar/Toolbar";
+import SideDrawer from "../../components/UI/Navigation/SideDrawer/SideDrawer";
+import Header from "../../components/UI/Header/Header";
 
 class MoveBuilder extends Component {
   state = {
@@ -14,6 +17,15 @@ class MoveBuilder extends Component {
     legacy_moves: [],
     mew_data: []
   };
+
+  // sideDrawerClosed = () => {
+  //   this.setState({ showSideDrawer: false });
+  // };
+  // sideDrawerToggleHandler = () => {
+  //   this.setState(prevState => {
+  //     return { showSideDrawer: !prevState.showSideDrawer };
+  //   });
+  // };
 
   componentDidMount() {
     //FOR TESTING
@@ -130,7 +142,7 @@ class MoveBuilder extends Component {
   render() {
     let table = null;
     let pokemonNames = [];
-    // console.log("the state of pokemon is", this.state.legacy_moves);
+    // console.log("the state of pokemon is", this.state.quick_moves);
     if (this.state.pokemon) {
       pokemonNames = [...this.state.pokemon];
       pokemonNames.push(
@@ -186,16 +198,28 @@ class MoveBuilder extends Component {
 
     // // let form = <Spinner />;
     // console.log(element);
+    const options = this.state.pokemon.map(element => {
+      return { value: element.pokemonName, label: element.pokemonName };
+    });
     let form = (
       <Input
         inputType="select"
         selectedValue={this.state.selectedOption}
-        pokemon={pokemonNames}
+        options={options}
+        label="Select a Pokemon"
+        // pokemon={pokemonNames}
         changed={this.handleChange}
       />
     );
     return (
+      // <div className="container">
+      //   <Toolbar drawerToggledClicked={this.sideDrawerToggleHandler} />
+      //   <SideDrawer
+      //     closed={this.sideDrawerClosed}
+      //     open={this.state.showSideDrawer}
+      //   />
       <div>
+        <Header header="PVP Move Analysis" />
         <div className={classes.MoveBuilder}>
           {form}
           {/* <div style={{ color: "white" }}> </div> */}

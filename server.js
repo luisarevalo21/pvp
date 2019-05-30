@@ -85,6 +85,53 @@ app.get("/pokemon", (req, res) => {
   });
 });
 
+app.get("/chargemoves/add", (req, res) => {
+  const { chargeMoveName, basePower, energy, damagePerEnergy } = req.query;
+  console.log(chargeMoveName, basePower, energy, damagePerEnergy);
+  const INSERT_INTO_PVP_CHARGE_MOVES = `INSERT INTO pvp_charge_moves(chargeMoveName, basePower, energy, damagePerEnergy) VALUES("${chargeMoveName}", ${basePower}, ${energy}, ${damagePerEnergy}  )`;
+  connection.query(INSERT_INTO_PVP_CHARGE_MOVES, (err, results) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.send("successful push to database");
+    }
+  });
+});
+
+app.get("/fastmoves/add", (req, res) => {
+  const {
+    fastMoveName,
+    basePower,
+    duration,
+    energyGained,
+    coolDown,
+    damagePerDuration,
+    energyPerDuration
+  } = req.query;
+  console.log(
+    fastMoveName,
+    basePower,
+    duration,
+    energyGained,
+    coolDown,
+    damagePerDuration,
+    energyPerDuration
+  );
+  const INSERT_INTO_PVP_FAST_MOVES = `INSERT INTO pvp_fast_moves( fastMoveName,
+    basePower,
+    duration,
+    energyGained,
+    coolDown,
+    damagePerDuration,
+    energyPerDuration) VALUES("${fastMoveName}", ${basePower}, ${duration}, ${energyGained} , ${coolDown} , ${damagePerDuration} , ${energyPerDuration})`;
+  connection.query(INSERT_INTO_PVP_FAST_MOVES, (err, results) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.send("successful push to database");
+    }
+  });
+});
 app.get("/fastmoves", (req, res) => {
   connection.query(selectFastMoves, (err, results) => {
     if (err) {

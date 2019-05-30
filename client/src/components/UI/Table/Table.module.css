@@ -1,0 +1,58 @@
+.Table {
+  color: white;
+  width: 100%;
+  /* padding: 20px; */
+  /* text-align: center; */
+  border: none;
+  padding: 20px;
+  /* border-radius: 5px; */
+  /* margin: 20px, auto; */
+  font-size: inherit;
+  background-color: black;
+  color: #ced4da;
+  margin-top: 10px;
+}
+
+.Winner {
+  background: green;
+}
+.Tie {
+}
+.Loss {
+}
+
+h3 {
+  color: #48e08d;
+}
+
+/* table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+} */
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+/* th {
+  background-color: black;
+  color: white;
+} */
+
+th:first-child,
+td:first-child {
+  position: sticky;
+  left: 0px;
+  background-color: black;
+}
+/* td:first-child {
+  background-color: black;
+} */
+/* @media (min-width: 500px) and (min-height: 400px) {
+  .Burger {
+    width: 350px;
+    height: 300px;
+  } */
