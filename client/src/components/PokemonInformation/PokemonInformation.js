@@ -1,7 +1,6 @@
 import React from "react";
 import Card from "../UI/Card/Card";
 import classes from "./PokemonInformation.module.css";
-import logo from "../../Pokemon/Charmander.png";
 const pokemonInformation = props => (
   <div className={classes.PokemonInformation}>
     {/* <div class="row">
