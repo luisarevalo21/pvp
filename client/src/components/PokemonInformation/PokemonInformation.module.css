@@ -1,0 +1,23 @@
+.PokemonInformation {
+  color: #48e08d;
+  border: 1px solid grey;
+  text-align: center;
+  padding: 10px;
+  width: 100%;
+  border-radius: 2px;
+  background-color: black;
+}
+
+.Row {
+  /* color: black; */
+  align-items: left;
+  color: red;
+  display: inline;
+}
+.Card {
+  background-color: black;
+}
+.Border {
+  box-sizing: border-box;
+  display: inline;
+}

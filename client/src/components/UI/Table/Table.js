@@ -124,15 +124,16 @@ const table = props => {
     });
   // console.log("charge moves array is ", chargeMoveData);
 
-  let basePower = [];
-
   // console.log(props.quickMoves);
-  let array = [];
+  // let array = [];
+  let basePower = [];
   let duration = [];
-  let energyDelta = [];
-  let moveCooldown = [];
-  let energyPerDuration = [];
-  let damagePerDuration = [];
+  let energy = [];
+  let damagePerTurn = [];
+  let energyPerTurn = [];
+  // let moveCooldown = [];
+  // let energyPerDuration = [];
+  // let damagePerDuration = [];
   basePower = quickMoveData.map(el => {
     // array.push(el.basePower);
 
@@ -140,23 +141,23 @@ const table = props => {
     return <td key={el.basePower + Math.random()}>{el.basePower}</td>;
   });
 
-  duration = quickMoveData.map(el => {
+  energy = quickMoveData.map(el => {
     // console.log("printing el now", el.quickMoveStats);
-    return <td key={el.duration + Math.random()}>{el.duration}</td>;
+    return <td key={el.energy + Math.random()}>{el.energy}</td>;
   });
 
-  energyDelta = quickMoveData.map(el => (
-    <td key={el.energyGained + Math.random()}> {el.energyGained}</td>
+  duration = quickMoveData.map(el => (
+    <td key={el.duration + Math.random()}> {el.duration}</td>
   ));
-  moveCooldown = quickMoveData.map(el => (
-    <td key={el.cooldown + Math.random()}>{el.cooldown} </td>
+  damagePerTurn = quickMoveData.map(el => (
+    <td key={el.damagePerTurn + Math.random()}>{el.damagePerTurn}</td>
   ));
-  energyPerDuration = quickMoveData.map(el => (
-    <td key={el.energyPerDuration + Math.random()}> {el.energyPerDuration}</td>
+  energyPerTurn = quickMoveData.map(el => (
+    <td key={el.energyPerTurn + Math.random()}> {el.energyPerTurn}</td>
   ));
-  damagePerDuration = quickMoveData.map(el => (
-    <td key={el.damagePerDuration + Math.random()}> {el.damagePerDuration}</td>
-  ));
+  // damagePerDuration = quickMoveData.map(el => (
+  //   <td key={el.damagePerDuration + Math.random()}> {el.damagePerDuration}</td>
+  // ));
 
   return (
     <div
@@ -214,25 +215,25 @@ const table = props => {
               {basePower}
             </tr>
             <tr>
-              <td key={3}>Turn</td>
+              <td key={3}>Energy</td>
+              {energy}
+            </tr>
+            <tr>
+              <td key={4}>Duration</td>
               {duration}
             </tr>
             <tr>
-              <td key={4}>Energy Delta</td>
-              {energyDelta}
-            </tr>
-            <tr>
-              <td key={5}>Move Cooldown</td>
-              {moveCooldown}
+              <td key={5}>Damage Per Turn</td>
+              {damagePerTurn}
             </tr>
             <tr>
               <td key={6}>Energy Per Turn</td>
-              {energyPerDuration}
+              {energyPerTurn}
             </tr>
-            <tr>
-              <td key={7}>Damage Per Turn</td>
+            {/* <tr>
+              <td key={7}>Damage Per Seconds</td>
               {damagePerDuration}
-            </tr>
+            </tr> */}
           </tbody>
         </table>
         <p>* indicates legacy move</p>

@@ -7,6 +7,8 @@ import MewTable from "../../components/UI/MewTable/MewTable";
 import Toolbar from "../../components/UI/Navigation/Toolbar/Toolbar";
 import SideDrawer from "../../components/UI/Navigation/SideDrawer/SideDrawer";
 import Header from "../../components/UI/Header/Header";
+import PokemonInformation from "../../components/PokemonInformation/PokemonInformation";
+import pokemonInformation from "../../components/PokemonInformation/PokemonInformation";
 
 class MoveBuilder extends Component {
   state = {
@@ -141,18 +143,40 @@ class MoveBuilder extends Component {
 
   render() {
     let table = null;
-    let pokemonNames = [];
+    let pokemonInformation = null;
+    // let pokemonNames = [];
+    let options = [];
     // console.log("the state of pokemon is", this.state.quick_moves);
     if (this.state.pokemon) {
-      pokemonNames = [...this.state.pokemon];
-      pokemonNames.push(
-        this.state.pokemon.map(element => {
-          return { value: element.Pokemon, label: element.Pokemon };
-        })
-      );
+      // pokemonNames = [...this.state.pokemon];
+      // pokemonNames.push(
+      //   this.state.pokemon.map(element => {
+      //     return {
+      //       value: element.Pokemon,
+      //       label: element.Pokemon
+      //     };
+      //   })
+      // );
+      // console.log("this.state. pokemon", this.state.pokemon);
+      options = this.state.pokemon.map(element => {
+        return {
+          value: element.pokemonName,
+          label: element.pokemonName,
+          number: element.id,
+          typeOne: element.TypeI,
+          typeTwo: element.TypeII,
+          hp: element.HP,
+          def: element.DEF,
+          atk: element.ATK,
+          maxCP: element.maxCP
+        };
+      });
     }
 
+    // console.log("pokemon names ", pokemonNames);
+
     if (this.state.selectedValue) {
+      // console.log("this.state.selectValue", this.state.selectedValue);
       if (this.state.selectedValue.value === "Mew") {
         table = (
           <MewTable
@@ -163,6 +187,15 @@ class MoveBuilder extends Component {
         );
         console.log("mew was pressed");
       } else {
+        // console.log(
+        //   "this.state.selectedValue.typeOne",
+        //   this.state.selectedValue.typeOne
+        // );
+        // console.log(
+        //   "this.state.selectedValue.typeOne",
+        //   this.state.selectedValue.typeTwo
+        // );
+
         let legacy_moves = [];
         // console.log("printing the value now", this.state.selectedValue);
         const data = this.state.pokemon.filter(
@@ -193,14 +226,28 @@ class MoveBuilder extends Component {
           />
         );
       }
+
+      // console.log("this.state.selected value", this.state.selectedValue);
+      pokemonInformation = (
+        <PokemonInformation
+          pokemonName={this.state.selectedValue.value}
+          pokemonNumber={this.state.selectedValue.number}
+          typeOne={this.state.selectedValue.typeOne}
+          typeTwo={this.state.selectedValue.typeTwo}
+          hp={this.state.selectedValue.hp}
+          atk={this.state.selectedValue.atk}
+          def={this.state.selectedValue.def}
+          maxCP={this.state.selectedValue.maxCP}
+        />
+      );
     }
     // console.log("this.state.selctedvalue", this.state.selectedValue);
 
     // // let form = <Spinner />;
     // console.log(element);
-    const options = this.state.pokemon.map(element => {
-      return { value: element.pokemonName, label: element.pokemonName };
-    });
+    // const options = this.state.pokemon.map(element => {
+    //   return { value: element.pokemonName, label: element.pokemonName };
+    // });
     let form = (
       <Input
         inputType="select"
@@ -222,6 +269,7 @@ class MoveBuilder extends Component {
         <Header header="PVP Move Analysis" />
         <div className={classes.MoveBuilder}>
           {form}
+          {pokemonInformation}
           {/* <div style={{ color: "white" }}> </div> */}
           {/* {moveData} */}
           {table}

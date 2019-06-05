@@ -15,7 +15,7 @@ const input = props => {
   // console.log("options", options);
 
   // console.log("THE PROPS ARE", props.inputType);
-  console.log("props.value", props.value);
+  // console.log("props.value", props.value);
 
   switch (props.inputType) {
     case "select":
