@@ -7,17 +7,39 @@
   border-radius: 2px;
   background-color: black;
 }
-
+/* 
 .Row {
-  /* color: black; */
+  color: black;
   align-items: left;
   color: red;
   display: inline;
-}
-.Card {
+} */
+/* .Card {
   background-color: black;
-}
-.Border {
+} */
+/* .Border {
   box-sizing: border-box;
   display: inline;
+} */
+
+/* @media (min-width: 500px) {
+  .PokemonInformation {
+    flex-direction: row;
+    display: flex;
+    flex-direction: row;
+    border: 20px solid red;
+  }
+} */
+
+.Row {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0px auto;
+}
+
+@media (min-width: 500px) {
+  .Row {
+    width: 50%;
+  }
 }

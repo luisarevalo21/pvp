@@ -16,6 +16,7 @@ const pokemonInformation = props => (
       <p>Dex #{props.pokemonNumber}</p>
     </div> */}
 
+    {/* <Card title={props.pokemonName} body= {props.pokemonNumber}/> */}
     <div className="card" style={{ backgroundColor: "black" }}>
       <div className="card-body">
         <div className="card-text">
@@ -52,7 +53,11 @@ const pokemonInformation = props => (
         <p class="card-text">here the Height will go </p>
       </div>
     </div> */}
-    <div className="row">
+
+    <div className={classes.Row}>
+      {/* <div className="row"> */}
+      {/* <div style={{ flexDirection: "row", display: "flex" }}> */}
+
       <Card title="Type" body={props.typeOne + " " + props.typeTwo} />
       {/* <Card title="Weight" body="this is where the weight goes" />
       <Card title="Height" body="this is where the height goes" /> */}
@@ -65,6 +70,7 @@ const pokemonInformation = props => (
           <div>Base ATK: {props.atk}</div>
           <div>Base DEF: {props.def}</div>
         </div>
+        {/* </div> */}
       </div>
     </div>
 

@@ -1,7 +1,7 @@
 import React from "react";
 
 const card = props => (
-  <div className="col-sm-6">
+  <div>
     <div className="card" style={{ backgroundColor: "black" }}>
       <div className="card-body">
         <h5 className="card-title">{props.title}</h5>
