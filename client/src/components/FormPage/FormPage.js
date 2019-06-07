@@ -36,6 +36,15 @@ class FormPage extends Component {
           placeholder: "0"
         }
       },
+      energy: {
+        value: "",
+        inputType: "input",
+        label: "Energy",
+        elementConfig: {
+          type: "number",
+          placeholder: "0"
+        }
+      },
       duration: {
         value: "",
         inputType: "input",
@@ -45,37 +54,19 @@ class FormPage extends Component {
           placeholder: "0"
         }
       },
-      energyGained: {
+      damagePerTurn: {
         value: "",
         inputType: "input",
-        label: "Energy Gained",
+        label: "Damage Per Turn",
         elementConfig: {
           type: "number",
           placeholder: "0"
         }
       },
-      coolDown: {
+      energyPerTurn: {
         value: "",
         inputType: "input",
-        label: "Cool Down",
-        elementConfig: {
-          type: "number",
-          placeholder: "0"
-        }
-      },
-      damagePerDuration: {
-        value: "",
-        inputType: "input",
-        label: "Damage Per Duration",
-        elementConfig: {
-          type: "number",
-          placeholder: "0"
-        }
-      },
-      energyPerDuration: {
-        value: "",
-        inputType: "input",
-        label: "Energy Per Duration",
+        label: "Energy Per Turn",
         elementConfig: {
           type: "number",
           placeholder: "0"
@@ -193,16 +184,14 @@ class FormPage extends Component {
       case "Quick Move":
         // duration, energyGained, coolDown, damagePerDuration, energyPerDuration;
         fetch(
-          `https://pvp-move-analysis.herokuapp.com/fastmoves/add?chargeMoveName=${
+          `https://pvp-move-analysis.herokuapp.com/fastmoves/add?fastMoveName=${
             // `http://localhost:3036/fastmoves/add?fastMoveName=${
             copyObject.name.value
-          }&basePower=${copyObject.basePower.value}&duration=${
-            copyObject.duration.value
-          }&energyGained=${copyObject.energyGained.value}&coolDown=${
-            copyObject.coolDown.value
-          }&damagePerDuration=${
-            copyObject.damagePerDuration.value
-          }&energyPerDuration=${copyObject.energyPerDuration.value}`
+          }&basePower=${copyObject.basePower.value}&energy=${
+            copyObject.energy.value
+          }&duration=${copyObject.duration.value}&damagePerTurn=${
+            copyObject.damagePerTurn.value
+          }&energyPerTurn=${copyObject.energyPerTurn.value}`
         )
           .then(response => {
             console.log("the response is", response);

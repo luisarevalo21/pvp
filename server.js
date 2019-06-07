@@ -102,28 +102,25 @@ app.get("/fastmoves/add", (req, res) => {
   const {
     fastMoveName,
     basePower,
+    energy,
     duration,
-    energyGained,
-    coolDown,
-    damagePerDuration,
-    energyPerDuration
+    damagePerTurn,
+    energyPerTurn
   } = req.query;
   console.log(
     fastMoveName,
     basePower,
+    energy,
     duration,
-    energyGained,
-    coolDown,
-    damagePerDuration,
-    energyPerDuration
+    damagePerTurn,
+    energyPerTurn
   );
   const INSERT_INTO_PVP_FAST_MOVES = `INSERT INTO pvp_fast_moves( fastMoveName,
     basePower,
+    energy,
     duration,
-    energyGained,
-    coolDown,
-    damagePerDuration,
-    energyPerDuration) VALUES("${fastMoveName}", ${basePower}, ${duration}, ${energyGained} , ${coolDown} , ${damagePerDuration} , ${energyPerDuration})`;
+    damagePerTurn,
+    energyPerTurn) VALUES("${fastMoveName}", ${basePower}, ${energy}, ${duration} , ${damagePerTurn} , ${energyPerTurn})`;
   connection.query(INSERT_INTO_PVP_FAST_MOVES, (err, results) => {
     if (err) {
       return res.send(err);
