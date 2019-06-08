@@ -1,6 +1,6 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "https://pvp-application.firebaseio.com/"
+  baseURL: "gs://pvp-application.appspot.com/pokemon"
 });
 export default instance;
