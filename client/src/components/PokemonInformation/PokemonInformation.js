@@ -1,21 +1,22 @@
 import React, { Component } from "react";
 import Card from "../UI/Card/Card";
 import classes from "./PokemonInformation.module.css";
-import * as firebase from "firebase";
+import firebase from "../../Firebase";
+// import * as firebase from "firebase";
 import firestore from "firebase/firestore";
 
 // import { resolve } from "url";
 
-const config = {
-  apiKey: "AIzaSyAZ1XB1wOKxFjUOwVMzsotBQyQJQXpoiS4",
-  authDomain: "pvp-application.firebaseapp.com",
-  databaseURL: "https://pvp-application.firebaseio.com",
-  projectId: "pvp-application",
-  storageBucket: "pvp-application.appspot.com",
-  messagingSenderId: "213303980815",
-  appId: "1:213303980815:web:3aac863d6659bb9e"
-};
-firebase.initializeApp(config);
+// const config = {
+//   apiKey: "AIzaSyAZ1XB1wOKxFjUOwVMzsotBQyQJQXpoiS4",
+//   authDomain: "pvp-application.firebaseapp.com",
+//   databaseURL: "https://pvp-application.firebaseio.com",
+//   projectId: "pvp-application",
+//   storageBucket: "pvp-application.appspot.com",
+//   messagingSenderId: "213303980815",
+//   appId: "1:213303980815:web:3aac863d6659bb9e"
+// };
+// firebase.initializeApp(config);
 const storage = firebase.storage().ref();
 
 class PokemonInformation extends Component {
@@ -25,29 +26,34 @@ class PokemonInformation extends Component {
   };
 
   componentDidUpdate() {
-    if (
-      !this.state.selected ||
-      (this.state.selected && this.state.pokemonName !== this.props.pokemonName)
-    ) {
-      console.log("this.props.pokemonName", this.props.pokemonName);
-      const copy = { ...this.state };
-      console.log("the copy is", copy);
-      storage
-        .child(`${this.props.pokemonName}.png`)
-        .getDownloadURL()
-        .then(url => {
-          copy.selected = url;
-          console.log("the copy is", copy);
+    this.fetchImage();
+    // if (
+    //   !this.state.selected ||
+    //   (this.state.selected && this.state.pokemonName !== this.props.pokemonName)
+    // ) {
+    //   console.log("this.props.pokemonName", this.props.pokemonName);
+    //   const copy = { ...this.state };
+    //   console.log("the copy is", copy);
+    //   storage
+    //     .child(`${this.props.pokemonName}.png`)
+    //     .getDownloadURL()
+    //     .then(url => {
+    //       copy.selected = url;
+    //       console.log("the copy is", copy);
 
-          this.setState({
-            selected: copy.selected,
-            pokemonName: this.props.pokemonName
-          });
-        })
-        .catch(error => {
-          // Handle any errors
-        });
-    }
+    //       this.setState({
+    //         selected: copy.selected,
+    //         pokemonName: this.props.pokemonName
+    //       });
+    //     })
+    //     .catch(error => {
+    //       console.log(error);
+    //       this.setState({
+    //         selected: "no image to display",
+    //         pokemonName: this.props.pokemonName
+    //       });
+    //       // Handle any errors
+    //     });
 
     // console.log("this.props.pokemonName", this.props.pokemonName);
     // const copy = { ...this.state };
@@ -65,19 +71,23 @@ class PokemonInformation extends Component {
     //   });
   }
   componentDidMount() {
+    this.fetchImage();
+  }
+
+  fetchImage = () => {
     if (
       !this.state.selected ||
       (this.state.selected && this.state.pokemonName !== this.props.pokemonName)
     ) {
-      console.log("this.props.pokemonName", this.props.pokemonName);
+      // console.log("this.props.pokemonName", this.props.pokemonName);
       const copy = { ...this.state };
-      console.log("the copy is", copy);
+      // console.log("the copy is", copy);
       storage
         .child(`${this.props.pokemonName}.png`)
         .getDownloadURL()
         .then(url => {
           copy.selected = url;
-          console.log("the copy is", copy);
+          // console.log("the copy is", copy);
 
           this.setState({
             selected: copy.selected,
@@ -85,10 +95,23 @@ class PokemonInformation extends Component {
           });
         })
         .catch(error => {
-          // Handle any errors
+          // console.log(error);
+          storage
+            .child(`pokeball.png`)
+            .getDownloadURL()
+            .then(url => {
+              copy.selected = url;
+              console.log("the copy is", copy);
+
+              this.setState({
+                selected: copy.selected,
+                pokemonName: this.props.pokemonName
+              });
+            });
         });
     }
-  }
+  };
+
   // componentDidUpdate() {
   //   const copy = { ...this.state };
   //   console.log("the copy is", copy);
@@ -105,7 +128,7 @@ class PokemonInformation extends Component {
   //       // Handle any errors
   //     });
   // }
-  getImage(image) {}
+  // getImage(image) {}
 
   // componentDidMount() {
   //   let imageString = "";
@@ -128,24 +151,6 @@ class PokemonInformation extends Component {
   //   .catch(error => console.log(error));
 
   render() {
-    console.log("the state is,", this.state);
-    function checkImage(variable) {
-      // console.log("the variable is ", variable);
-      // let myImage = new Image();
-      try {
-        let url_image = require("../../Pokemon/" + variable + ".png");
-        return (
-          <img
-            style={{ width: "14rem" }}
-            className={classes.Image}
-            src={url_image}
-            //   width="50px"
-          />
-        );
-      } catch {
-        return <p>No image</p>;
-      }
-    }
     //   const imageSrc = require(`../../Pokemon/${props.pokemonName}.png`);
     //   imageSrc.onLoad();
     return (
