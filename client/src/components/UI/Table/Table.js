@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./Table.module.css";
+import QCMoveTable from "../QCMove Table/QCMove Table";
 
 const table = props => {
   // console.log("the moves are", props.quickMoves);
@@ -30,7 +31,9 @@ const table = props => {
       key === "quick move 2" ||
       key === "quick move 3" ||
       key === "quick move 4" ||
-      key === "quick move 5"
+      key === "quick move 5" ||
+      key === "quick move 6" ||
+      key === "quick move 7"
     ) {
       // console.log("THE COPY KEY IS", copy[key]);
       quickMoves.push({ key: copy[key] });
@@ -43,7 +46,9 @@ const table = props => {
       key === "charge move 5" ||
       key === "charge move 6" ||
       key === "charge move 7" ||
-      key === "charge move 8"
+      key === "charge move 8" ||
+      key === "charge move 9" ||
+      key === "charge move 10"
     ) {
       chargeMoves.push({ key: copy[key] });
     }
@@ -168,6 +173,10 @@ const table = props => {
         classes.Table
       ].join(" ")}
     >
+      {/* <QCMoveTable
+        chargeMoveData={chargeMoveData}
+        quickMoveData={quickMoveData}
+      /> */}
       <div className="table-responsive">
         <h3> Quick Moves</h3>
         <table>

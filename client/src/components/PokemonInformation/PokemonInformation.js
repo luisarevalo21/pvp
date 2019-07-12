@@ -22,7 +22,8 @@ const storage = firebase.storage().ref();
 class PokemonInformation extends Component {
   state = {
     selected: "",
-    pokemonName: ""
+    pokemonName: "",
+    loading: false
   };
 
   componentDidUpdate() {
@@ -91,7 +92,8 @@ class PokemonInformation extends Component {
 
           this.setState({
             selected: copy.selected,
-            pokemonName: this.props.pokemonName
+            pokemonName: this.props.pokemonName,
+            loading: false
           });
         })
         .catch(error => {
@@ -105,7 +107,8 @@ class PokemonInformation extends Component {
 
               this.setState({
                 selected: copy.selected,
-                pokemonName: this.props.pokemonName
+                pokemonName: this.props.pokemonName,
+                loading: false
               });
             });
         });
@@ -177,8 +180,6 @@ class PokemonInformation extends Component {
             </div>
           </div>
           {/* {checkImage(this.props.pokemonName)} */}
-
-          {/* <image src={this.state.image} /> */}
           <img
             // style={{ width: "14rem" }}
             className={classes.Image}
@@ -186,6 +187,14 @@ class PokemonInformation extends Component {
             alt="Pokemon Image"
             width="50px"
           />
+          {/* <image src={this.state.image} /> */}
+          {/* <img
+            // style={{ width: "14rem" }}
+            className={classes.Image}
+            src={this.state.selected}
+            alt="Pokemon Image"
+            width="50px"
+          /> */}
         </div>
         {/* <div className={classes.Border}>
       <p>Type</p>
