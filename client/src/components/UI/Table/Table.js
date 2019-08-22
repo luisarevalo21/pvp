@@ -16,6 +16,7 @@ const table = props => {
 
   const copy = { ...props.selectedPokemon[0] };
 
+  // console.log("the copy is", copy);
   // console.log("copy is copy", copy);
   // const moves = props.legacyMoves.filter(element => {
   //   return element.moveName === copy.Pokemon;

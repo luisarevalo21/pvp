@@ -82,6 +82,8 @@ class PokemonInformation extends Component {
     ) {
       // console.log("this.props.pokemonName", this.props.pokemonName);
       const copy = { ...this.state };
+
+      // console.log("the pokemon name is", this.props.pokemonName);
       // console.log("the copy is", copy);
       storage
         .child(`${this.props.pokemonName}.png`)

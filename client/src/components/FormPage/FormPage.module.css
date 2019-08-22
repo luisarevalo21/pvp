@@ -3,10 +3,7 @@
   border: 1px solid #ccc;
   background-color: black;
   font: inherit;
-  padding: 6px 10px;
-  display: block;
   width: 100%;
-  box-sizing: border-box;
 }
 .Input {
   width: 100%;
